@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHIC Care Desk — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- LOGIN VIEW -->
+<div class="admin-login-wrap" id="loginView">
+  <div class="admin-login-card">
+    <h2>CHIC Care Desk</h2>
+    <p class="sub">Staff sign-in required. Not connected to the public website's booking flow.</p>
+    <div id="loginError"></div>
+    <div class="modal-field"><label>Email</label><input type="email" id="loginEmail" autocomplete="username"></div>
+    <div class="modal-field"><label>Password</label><input type="password" id="loginPassword" autocomplete="current-password"></div>
+    <button class="btn btn-primary" id="loginBtn" style="width:100%;justify-content:center;">Sign In</button>
+    <p style="font-size:12px;color:var(--muted);margin-top:18px;">Admin accounts are created by CHIC's Supabase project owner — see the setup README if you need access.</p>
+  </div>
+</div>
+
+<!-- DASHBOARD VIEW -->
+<div class="admin-page-wrap" id="dashboardView" style="display:none;">
+  <div class="admin-page-header">
+    <div class="admin-brand">
+      <div>
+        <div class="admin-brand-title">CHIC Care Desk</div>
+        <div class="admin-brand-sub" id="loggedInAs"></div>
+      </div>
+    </div>
+    <button class="admin-logout-btn" id="logoutBtn">Sign Out</button>
+  </div>
+
+  <div class="admin-page-body">
+    <div class="admin-section-tabs">
+      <div class="admin-section-tab active" data-section="appointments">Appointments</div>
+      <div class="admin-section-tab" data-section="doctors">Doctors</div>
+    </div>
+
+    <!-- APPOINTMENTS -->
+    <div id="appointmentsSection">
+      <div class="admin-summary" id="adminSummary"></div>
+      <div class="admin-tabs" id="adminTabs"></div>
+      <div class="admin-queue" id="adminQueue"></div>
+    </div>
+
+    <!-- DOCTORS -->
+    <div id="doctorsSection" style="display:none;">
+      <div class="admin-doc-toolbar">
+        <h3 style="font-size:17px;">Manage Doctors</h3>
+        <button class="btn btn-primary" id="addDoctorBtn">+ Add Doctor</button>
+      </div>
+      <div class="admin-doc-list" id="adminDocList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTOR ADD/EDIT MODAL -->
+<div class="modal-overlay" id="doctorFormModal">
+  <div class="modal-card" id="doctorFormCard" style="max-width:560px;">
+    <button class="modal-close" id="doctorFormClose" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="doctorFormBody"></div>
+  </div>
+</div>
+
+<!-- APPOINTMENT DETAIL MODAL -->
+<div class="modal-overlay" id="apptDetailModal">
+  <div class="modal-card">
+    <button class="modal-close" id="apptDetailClose" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="apptDetailBody"></div>
+  </div>
+</div>
+
+<div id="printSlip"></div>
+<div class="toast-stack" id="toastStack"></div>
+
+<script type="module" src="js/admin-app.js"></script>
+</body>
+</html>
